@@ -6,6 +6,10 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    permissions:
+  # required for all workflows
+      security-events: write
+
     steps:
     # This step checks out a copy of your repository.
     - name: Checkout repository hello-world
@@ -19,6 +23,13 @@ jobs:
         cp ../../pvs/* .
         chmod 777 script.sh
         ./script.sh
+        cp *.sarif ../../pvs
+        
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Run
+      run: cp ../../pvs/*.sarif .
    
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
