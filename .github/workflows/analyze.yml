@@ -10,15 +10,13 @@ jobs:
     # This step checks out a copy of your repository.
     - name: Checkout repository hello-world
       uses: actions/checkout@v2
-      
-    - name: Checkout repository hello-world
-      uses: actions/checkout@v2
       with:
         repository: sodji98/hello-world
 
     
     - name: Compile
       run: |
+        cp ../../pvs/* .
         chmod 777 script.sh
         ./script.sh
    
