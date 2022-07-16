@@ -9,9 +9,11 @@ jobs:
     steps:
     # This step checks out a copy of your repository.
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: vweevers/multi-checkout-action@v1
       with:
-        repository: sodji98/hello-world pvs-studio
+        repository: |
+          pvs-studio
+          sodji98/hello-world
 
     
     - name: Compile
